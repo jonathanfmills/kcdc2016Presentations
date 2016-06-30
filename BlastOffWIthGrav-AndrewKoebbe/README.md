@@ -5,6 +5,6 @@ There are many great CMSs out there. Database-backed CMSs provide a nice admin i
 
 In this session we'll check out Grav, a dynamic flat file CMS with an impressive optional admin UI and great performance. We'll walk through basic set up, content creation, custom content types and more with only Markdown, YAML, and Twig.
 
-* Slides: ./slides/index.html
+* Slides: ./slides/kcdc-grav.html
 * Slides Online: http://slides.com/akoebbe/kcdc-grav#/
 * Repo: https://bitbucket.org/akoebbe/grav-session
