@@ -1,0 +1,13 @@
+{
+  "name": "Zombie Alerts!",
+  "description": "Demo application for Notification Hubs.",
+  "manifest_version": 2,
+  "version": "0.3",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": ["gcm", "storage", "notifications", "https://zombiealerts-nh.servicebus.windows.net/*"],
+  "icons": { "128": "brain.png" }
+}
