@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Notifications Demo</h1>
+    <p class="lead">Demonstration of SignalR and Service Bus Notifications Hubs for notifying users in the browser.</p>
+</div>
+
+<div class="row">
+    
+    <div class="col-md-6">
+       <select id="notificationType">
+           <option value="raw" selected>Raw</option>
+           <option value="toastr">Toastr</option>
+           <option value="native">Native</option>
+       </select>
+    </div>
+    <div class="col-md-6">
+        <h5>Zombies</h5>
+        <ul id="zombieList"></ul>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+   <!-- only include one of these scripts to supply the notification function for that example-->
+<script src="~/Scripts/app/notifywithlocal.js"></script>
+<script src="~/Scripts/app/notifywithtoastr.js"></script>
+
+
+
+
+<script type="text/javascript">
+        $(function () {
+            // Declare a proxy to reference the hub.
+            var zombieHub = $.connection.zombieHub;
+
+            // Create a function that the hub can call to broadcast messages.
+            zombieHub.client.zombieSpotted = function (details) {
+               
+                //get notification type to use
+                var howToNotify = $("#notificationType").val();
+
+                //notify with method selected
+                switch (howToNotify) {
+                    case "raw":
+                        $("#zombieList").append("<li>" + details.Details + "</li>");
+                        break;
+                    case "toastr":
+                        notifyToastr(details);
+                        break;
+                    case "native":
+                        notifyLocal(details);
+                        break;
+                }
+            };
+
+            $.connection.hub.logging = true;
+            $.connection.hub.start().done(function () {
+                toastr.info("Hub is connected", "Connection successful");
+            });
+
+        });
+</script>
+
+
+}
