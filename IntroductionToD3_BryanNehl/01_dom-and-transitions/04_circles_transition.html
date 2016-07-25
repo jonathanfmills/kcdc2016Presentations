@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>data join</title>
+    <script src="../d3.min.js"></script>
+    <style type="text/css">
+			body {
+				background-color: #4f4f4f;
+			}
+			svg {
+				background-color: white; /* otherwise, it matches */
+			}
+		</style>
+</head>
+
+<body>
+    <script>
+        var dataset = [
+          {x:   50, y: 40, r: 32, color: '#f00'},
+          {x:  130, y: 50, r: 35, color: d3.hsl(156,.90,.31,1)}, // HSL
+          {x:  200, y: 60, r: 28, color: '#00f'},
+          {x:  300, y: 45, r: 25, color: 'orange'},
+          {x: 425, y: 50, r: 30, color: 'black'}
+        ];
+
+  			var width = 500;
+  			var height = 100;
+
+        d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+        d3.select("svg")
+            .selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr("cx", function(d) {
+              return d.x;
+            })
+            .attr("fill", function(d) {
+              return d.color;
+            })
+            .attr("cy", height)    // initial values
+            .attr("r", 1)
+            .transition()     // magic
+            .duration(2000)   // how long
+            .attr("r", function(d) {
+              return d.r;
+            })
+            .attr("cy", function(d) {
+              return d.y;
+            });
+    </script>
+
+</body>
+</html>

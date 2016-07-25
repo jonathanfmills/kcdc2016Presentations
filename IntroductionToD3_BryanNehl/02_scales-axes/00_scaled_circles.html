@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Scales</title>
+    <script src="../d3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var dataset = [
+          {x:   8, y: 8, r: 20, color: '#f00'},
+          {x:  30, y: 40, r: 20, color: '#0f0'},
+          {x:  60, y: 20, r: 20, color: '#00f'},
+          {x:  90, y: 30, r: 20, color: 'orange'},
+          {x:  80, y: 15, r: 20, color: 'black'}
+        ];
+
+  			var width = 500;
+  			var height = 300;
+
+        var xScale = d3.scale.linear()
+                    .domain([0,100])  // inputs
+                    .range([0,width]); // mapped to here
+
+        var yScale = d3.scale.linear()  // dynamic max value
+                    .domain([0,d3.max(dataset, function(d) { return d.y; })])  // inputs
+                    .range([0,height]); // mapped to here
+                                        // notice cropping because no padding
+
+        d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+        d3.select("svg")
+            .selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+            .attr("r", function(d) {
+              return d.r;
+            })
+            .attr("cy", function(d) {
+              return yScale(d.y);     // use the scale
+            })
+            .attr("cx", function(d) {
+              return xScale(d.x);     // use the scale
+            })
+            .attr("fill", function(d) {
+              return d.color;
+            });
+    </script>
+
+<br />
+Go to the console and
+<pre>xScale(50)</pre>
+</body>
+</html>

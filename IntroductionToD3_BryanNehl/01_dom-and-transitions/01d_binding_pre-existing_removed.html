@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>data join - pre-existing</title>
+  <script src="../d3.min.js"></script>
+</head>
+<body>
+
+  <h1>pre-existing element 1</h1>
+  <h1>pre-existing element 2</h1>
+  <h1>pre-existing element 3</h1>
+  <h1>pre-existing element 4</h1>
+
+  <script>
+    var dataset = ["one", "two", "three"];
+
+    d3.select("body").selectAll("h1")
+      .data(dataset)
+      .enter()
+      .append("h1");
+
+    // set text and remove extra elements!
+    d3.select("body").selectAll("h1")
+      .data(dataset)
+      .text(function(d){return d;})
+      .exit()
+      .remove();
+
+  </script>
+</body>
+</html>

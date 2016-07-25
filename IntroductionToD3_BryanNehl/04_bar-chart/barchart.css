@@ -1,0 +1,27 @@
+body {
+    background-color: #aaa;
+}
+svg {
+    background-color: white;
+}
+
+rect {
+  fill: grey;
+  stroke: black;
+}
+
+.entityLink text {
+  fill: blue;
+  cursor: pointer;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
