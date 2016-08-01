@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>multiple rectangles -- Y</title>
+    <style>
+    body { background-color: grey; }
+    svg { background-color: white; }
+    </style>
+</head>
+
+<body>
+    <!-- larger y values go down the page!
+        (0,0) is upper left corner
+      -->
+    <svg width="300" height="250">
+        <rect width="50" height="50" x="50" y="50" fill="red" />
+        <rect width="50" height="50" x="150" y="50" fill="blue" />
+        <rect width="50" height="50" x="50" y="150" fill="none" stroke="green" stroke-width="5" />
+        <rect width="50" height="50" x="150" y="150" fill="rgb(100,50,200)" stroke="red" stroke-width="3" />
+    </svg>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>D3 TEMPLATE</title>
+    <script src="../d3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="treemap.css">
+</head>
+
+<body>
+    <script>
+    var tree = {
+          name: "tree",
+          children: [
+                { name: "old stuff",
+                  children: [
+                    { name: "old 1", size: 3286, color: "#DDD"},
+                    { name: "old 2", size: 4436, color: "#AAA"},
+                    { name: "old 3", size: 2246, color: "#888"},
+                    { name: "old 4", size: 8604, color: "#555"}
+                  ] },
+                { name: "a", size: 2850, color: "red"},
+                { name: "b", size: 5510, color: "green"},
+                { name: "c", size: 3786, color: "blue"},
+                { name: "d", size: 6048, color: "yellow"},
+              ]
+          };
+
+        var width = innerWidth - 40,
+            height = innerHeight - 40,
+            color = d3.scale.category20(),        // color scale
+            div = d3.select("body").append("div")
+            .style("position", "relative");
+
+        var treemap = d3.layout.treemap()
+            .size([width, height])
+            .sticky(true)
+            .value(function(d) {
+                return d.size;
+            });
+
+        var node = div.datum(tree).selectAll(".node")
+            .data(treemap.nodes)
+            .enter().append("div")
+            .attr("class", "node")
+            .call(position)
+            .style("background-color", function(d) {
+      	        return d.name == 'tree' ? '#fff' : d.color; }) // color assignment
+            .append('div')
+            .style("font-size", function(d) {
+                // compute font size based on sqrt(area)
+                return Math.max(20, 0.18 * Math.sqrt(d.area)) + 'px';
+            })
+            .text(function(d) {
+                return d.children ? null : d.name;
+            });
+
+        function position() {
+            this.style("left", function(d) {
+                    return d.x + "px";
+                })
+                .style("top", function(d) {
+                    return d.y + "px";
+                })
+                .style("width", function(d) {
+                    return Math.max(0, d.dx - 1) + "px";
+                })
+                .style("height", function(d) {
+                    return Math.max(0, d.dy - 1) + "px";
+                });
+        }
+    </script>
+
+    <a href="https://github.com/mbostock/d3/wiki/Treemap-Layout">Tree Map</a>
+    <br />
+    <a href="https://bl.ocks.org/mbostock/4063582">Tree Map info.</a>
+</body>
+
+</html>

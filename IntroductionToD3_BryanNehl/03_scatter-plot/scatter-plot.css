@@ -1,0 +1,15 @@
+.grid .tick {
+    stroke: navy;
+    stroke-width: .5;
+    opacity: 0.75;
+}
+
+.grid path {
+    stroke-width: 0;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}

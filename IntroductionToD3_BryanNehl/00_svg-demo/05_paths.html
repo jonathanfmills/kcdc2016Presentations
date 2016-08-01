@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Paths</title>
+</head>
+
+<body>
+    <svg width="500" height="500">
+        <rect width="50" height="50" x="50" y="50" fill="red" />
+        <rect width="50" height="50" x="150" y="50" fill="blue" />
+        <rect width="50" height="50" x="50" y="150" fill="none" stroke="green" stroke-width="5" />
+        <rect width="50" height="50" x="150" y="150" fill="rgb(100,50,200)" stroke="red" stroke-width="3" />
+
+        <circle r="30" cx="125" cy="125" stroke="hotpink" stroke-width="3" />
+
+        <line x1="25" y1="205" x2="200" y2="300" stroke="black" stroke-width="20" />
+        <line x1="200" y1="300" x2="50" y2="275" stroke="blue" stroke-width="20" />
+
+        <!-- Z at the end of path directive means close the path -->
+        <path d="M250 250 L300 350 L250 350Z" stroke="green" stroke-width="4" />
+        <path d="M250 375 L325 350 L400 400 L450 375" stroke="magenta" stroke-width="2" fill="none" />
+    </svg>
+</body>
+
+</html>

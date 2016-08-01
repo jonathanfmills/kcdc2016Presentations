@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>data join - pre-existing</title>
+  <script src="../d3.min.js"></script>
+</head>
+<body>
+
+  <h1>pre-existing element</h1>
+
+  <script>
+    var dataset = ["one", "two", "three"];
+
+    // data binding with text
+    d3.select("body")
+      .selectAll("h1") // more than one!
+      .data(dataset) // bind the data to existing DOM
+      .enter()  // more dataset items then dom elements!
+      .append("h1")
+      .text(function(d){return d;});
+  </script>
+  <p>Use developer tools to inspect the pre-existing h1 element.  Note the __data__ property</p>
+</body>
+</html>

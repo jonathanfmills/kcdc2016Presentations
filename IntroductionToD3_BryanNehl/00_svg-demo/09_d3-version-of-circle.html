@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="../d3.js"></script>
+    <title>D3 version of circles</title>
+    <style>
+      body {
+        background-color: grey;
+      }
+      svg {
+        background-color: white;
+        font-size: 2em;
+        font-family: Sans-Serif;
+      }
+    </style>
+</head>
+
+<body>
+    <script>
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", 250)
+            .attr("height", 250);
+
+        svg.append("rect")
+        .attr("width",50)
+        .attr("height",50)
+        .attr("x",50)
+        .attr("y",50)
+        .attr("fill","red");
+
+        svg.append("rect")
+        .attr("width",50)
+        .attr("height",50)
+        .attr("x",150)
+        .attr("y",50)
+        .attr("fill","blue");
+
+        svg.append("rect")
+        .attr("width",50)
+        .attr("height",50)
+        .attr("x",50)
+        .attr("y",150)
+        .attr("fill","none")
+        .attr("stroke","green")
+        .attr("stroke-width",5);
+
+        svg.append("rect")
+        .attr("width",50)
+        .attr("height",50)
+        .attr("x",150)
+        .attr("y",150)
+        .attr("fill","rgb(100,50,200)")
+        .attr("stroke","red")
+        .attr("stroke-width",3);
+
+        svg.append("circle")
+        .attr("r",30)
+        .attr("cx",125)
+        .attr("cy",125)
+        .attr("stroke","hotpink")
+        .attr("stroke-width",3);
+
+        svg.append("text")
+        .attr("x",150)
+        .attr("y",230)
+        .text("D3!")
+    </script>
+
+    <svg width="250" height="250">
+        <rect width="50" height="50" x="50" y="50" fill="hotpink" />
+        <rect width="50" height="50" x="150" y="50" fill="brown" />
+        <rect width="50" height="50" x="50" y="150" fill="none" stroke="green" stroke-width="5" />
+        <rect width="50" height="50" x="150" y="150" fill="white" stroke="rgb(100,50,200)" stroke-width="3" />
+        <circle r="30" cx="125" cy="125" stroke="hotpink" stroke-width="3" />
+        <text x="150" y="230">SVG</text>
+    </svg>
+</body>
+
+</html>
